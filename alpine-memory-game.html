@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Memory Card Game</title>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+
+    <div id="app" x-data="initGame()" class="min-h-full">
+      <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex h-16 items-center justify-between">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+              </div>
+              <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                  <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Play Game</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <header class="bg-gray-50">
+        <div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <span class="block">Ready to Play Memory Game?</span>
+            <span class="block text-indigo-600">Why Don't You Start By Select The Game Modes</span>
+          </h2>
+          <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+            <div class="inline-flex rounded-md shadow">
+              <button
+                class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-5 py-3 text-base font-medium text-white hover:bg-indigo-700"
+                @click="startGame('easy')"
+                >Easy</button>
+            </div>
+            <div class="ml-3 inline-flex rounded-md shadow">
+              <button
+                class="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-indigo-600 hover:bg-indigo-50"
+                @click="startGame('medium')"
+                >Medium</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+          <div class="px-4 py-6 sm:px-0">
+            <h1 class="pb-10 font-bold text-3xl">Your Score
+              <span x-text="points"></span>
+              <span class="text-xs">pts</span>
+            </h1>
+            <div class="h-96 rounded-lg border-4 border-dashed border-gray-200">
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!--div x-data="initGame()" class="px-10 flex items-center justify-center min-h-screen">
+      <h1 class="fixed top-0 right-0 p-10 font-bold text-3xl">
+        <span x-text="points"></span>
+        <span class="text-xs">pts</span>
+      </h1>
+
+      <div class="flex-1 grid grid cols-4 gap-10">
+        <template x-for="(card, index) in cards" :key="index">
+          <div>
+            <button
+              x-show="!card.cleared"
+              :style="'background: ' + (card.flipped ? card.color: '#999')"
+              :disabled="flippedCards.length >= 1"
+              class="w-full h-32"
+              @click="flipCard(card)"
+              ></button>
+          </div>
+        </template>
+      </div>
+    </div-->
+
+    <!-- Flash Message -->
+    <!--div x-data="{ show:false, message: ''}"
+      x-show.transition.opacity="show"
+      x-text="message"
+      @flash.window="
+        message = $event.detail.message;
+        show = true;
+        setTImeout(() => show =false, 1000)
+      "
+      class="fixed bottom-0 right-0 bg-green-500 text-white p-2 mb-4 mr-4 rounded"
+      >
+    </div-->
+
+    <script>
+      
+      function initGame() {
+        return {
+          points: 0,
+          cards: [],
+          startGame(difficulty) {
+            if (difficulty === 'easy') {
+              alert('Easy Game Started');
+            } else if (difficulty === 'medium') {
+              alert('Medium Game Started');
+            }
+          }
+        };
+      }
+    </script>
+
+  </body>
+</html>
